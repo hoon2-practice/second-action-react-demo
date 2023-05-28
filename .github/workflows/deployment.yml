@@ -1,4 +1,4 @@
-name: Test Project
+name: Deploy Project
 on: push # 푸시 할 때 마다
 jobs:
     test: # 이름
@@ -18,3 +18,19 @@ jobs:
               run: npm ci # package-lock.json 기반으로 설치
             - name: Run tests
               run: npm test
+    # 두번째 jobs - 독립적이므로 서로에게 영향을 주지 않는다(병렬 실행)
+    deploy:
+        runs-on: ubuntu-latest
+        step:
+            - name: Get code
+              uses: actions/checkout@v3
+            - name: Install NodeJS
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+            - name: Install dependencies
+              run: npm ci
+            - name: Build project
+              run: npm run build
+            - name: Deploy
+              run: echo "배포 예시....."
