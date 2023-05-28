@@ -1,0 +1,9 @@
+name: Output information
+on: workflow_dispatch
+jobs:
+    info:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Output Github context
+              run: echo "${{ toJSON(github) }}"
+# ${{}} 구문을 사용하면 GitHub 컨텍스트 정보를 toJSON을 통해 json형식으로 출력

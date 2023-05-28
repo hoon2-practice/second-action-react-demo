@@ -1,5 +1,6 @@
 name: Deploy Project
-on: push # 푸시 할 때 마다
+# on: push # 푸시 할 때 마다
+on: [push, workflow_dispatch]
 jobs:
     test: # 이름
         runs-on: ubuntu-latest # 우분투 쓰면 node는 자동으로 설치
