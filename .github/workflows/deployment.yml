@@ -20,6 +20,7 @@ jobs:
               run: npm test
     # 두번째 jobs - 독립적이므로 서로에게 영향을 주지 않는다(병렬 실행)
     deploy:
+        needs: test # 순차적으로 하고싶다면 즉, test 후 배포
         runs-on: ubuntu-latest
         steps:
             - name: Get code
